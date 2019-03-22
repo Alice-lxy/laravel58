@@ -74,7 +74,7 @@ class UserController extends Controller
             if(password_verify($request->input('pwd'),$res['password'])){
                 $token = substr(md5(time().mt_rand(1,99999)),10,10);
                 setcookie('id',$res['id'],time()+86400,'/','lxy.qianqianya.xyz',false,true);
-                setcookie('token',$token,time()+86400,'/','lxy.qianqianya.xyz',false,true);
+                setcookie('token',$token,time()+86400,'/','',false,true);
 
                 $redis_token_key = "str:u_token_key".$res['id'];
                 Redis::set($redis_token_key,$token);
