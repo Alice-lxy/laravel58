@@ -62,6 +62,32 @@ class UserController extends Controller
         return view('users.login');
     }
     public function doLogin(Request $request){
+        //echo __METHOD__;
+        $name = $request->input('name');
+        $where = [
+            'name' => $name,
+        ];
+        $res = UserModel::where($where)->first();
+        if($res){
+            if(password_verify($request->input('pwd'),$res['pwd'])){
+                $token = substr(md5(time().mt_rand(1,99999)),10,10);
+                setcookie('id',$res['id'],time()+86400,'/','larvel.com',false,true);
+                setcookie('token',$token,time()+86400,'/','larvel.com',false,true);
+
+                $redis_token_key = "str:u_token_key".$res['id'];
+                Redis::set($redis_token_key,$token);
+                Redis::expire($redis_token_key,3600);
+
+                echo 'successly';
+                header("refresh:1,url='http://larvel.com/goods'");
+            }else{
+                exit('密码错误');
+            }
+        }else{
+            exit('此用户不存在');
+        }
+    }
+    public function test(Request $request){
 //        echo '<pre>';print_r($_POST);echo '</pre>';die;
         //echo __METHOD__;
         $name = $request->input('name');
@@ -73,8 +99,6 @@ class UserController extends Controller
         if($res){
             if(password_verify($request->input('pwd'),$res['password'])){
                 $token = substr(md5(time().mt_rand(1,99999)),10,10);
-                setcookie('id',$res['id'],time()+86400,'/','lxy.qianqianya.xyz',false,true);
-                setcookie('token',$token,time()+86400,'/','',false,true);
 
                 $redis_token_key = "str:u_token_key".$res['id'];
                 Redis::set($redis_token_key,$token);
