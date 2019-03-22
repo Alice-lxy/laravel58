@@ -62,14 +62,14 @@ class UserController extends Controller
         return view('users.login');
     }
     public function doLogin(Request $request){
-        echo '<pre>';print_r($_POST);echo '</pre>';die;
+//        echo '<pre>';print_r($_POST);echo '</pre>';die;
         //echo __METHOD__;
         $name = $request->input('name');
         $where = [
             'name' => $name,
         ];
         $res = UserModel::where($where)->first();
-
+       // print_r($res);
         if($res){
             if(password_verify($request->input('pwd'),$res['pwd'])){
                 $token = substr(md5(time().mt_rand(1,99999)),10,10);
@@ -85,7 +85,7 @@ class UserController extends Controller
                     'msg'   => 'ok',
                     'token' => $token
                 ];
-                header("refresh:1,url='https://lxy.qianqianya.xyz/goods'");
+                //header("refresh:1,url='https://lxy.qianqianya.xyz/goods'");
             }else{
                 $data = [
                     'error' =>  5000,
@@ -98,8 +98,8 @@ class UserController extends Controller
                 'error' => 8888,
                 'msg'   => 'account error'
             ];
-            echo json_encode($data);
         }
+        echo json_encode($data);
     }
 
     public function center(Request $request){
