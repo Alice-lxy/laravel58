@@ -89,7 +89,7 @@ class UserController extends Controller
     }
 
     public function test(Request $request){
-//        echo '<pre>';print_r($_POST);echo '</pre>';die;
+        //echo '<pre>';print_r($_POST);echo '</pre>';die;
         //echo __METHOD__;
         $name = $request->input('name');
         $where = [
@@ -100,15 +100,28 @@ class UserController extends Controller
         if($res){
             if(password_verify($request->input('pwd'),$res['pwd'])){
                 $token = substr(md5(time().mt_rand(1,99999)),10,10);
-                $redis_token_key = "str:u_token_key".$res['id'];
+                //setcookie('token',$token,time()+3600,'/','lxy.qianqianya.xyz',false,true);
+                /*$redis_token_key = "str:u_token_key".$res['id'];
                 Redis::set($redis_token_key,$token);
-                Redis::expire($redis_token_key,3600);
-
+                Redis::expire($redis_token_key,3600);*/
+                $type = $request->input('type');
+                //echo $type;die;
+                $id = $res['id'];
+                if($type == 1){
+                    Redis::flushAll();
+                    Redis::set("str:u_token_app_key$id",$token);
+                    Redis::expire("str:u_token_app_key$id",3600);
+                }else{
+                   Redis::flushAll();
+                    Redis::set("str:u_token_mobile_key$id",$token);
+                    Redis::expire("str:u_token_mobile_key$id",3600);
+                }
                 $data = [
                     'error' => 0,
                     'msg'   => 'ok',
                     'token' => $token
                 ];
+                //echo "<pre>";print_r($data);echo '</pre>';
             }else{
                 $data = [
                     'error' =>  5000,
@@ -117,7 +130,7 @@ class UserController extends Controller
             }
         }else{
             $data = [
-                'error' => 8888,
+                'error' => 8000,
                 'msg'   => 'account error'
             ];
         }
