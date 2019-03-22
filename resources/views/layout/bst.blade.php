@@ -48,13 +48,13 @@
                                 <li><a href="#">One more separated link</a></li>
                             </ul>
                         </li>
-                        <li><a href="/cart2">购物车</a></li>
-                        <li><a href="/userquit">退出</a></li>
+                        <li><a href="/cart">购物车</a></li>
+                        <li><a href="http://pslxy.miao629.com/userquit">退出</a></li>
                     </ul>
                 {{--@elseif(!session()->get('u_token'))--}}
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="http://passport.shop.com/login">登录</a></li>{{--/userlogin--}}
-                        <li><a href="http://passport.shop.com/reg">注册</a></li>{{--/userreg--}}
+                        <li><a href="http://pslxy.miao629.com/userlogin">登录</a></li>{{--/userlogin--}}
+                        <li><a href="http://pslxy.miao629.com/userreg">注册</a></li>{{--/userreg--}}
                         {{--<li><a href="https://open.weixin.qq.com/connect/qrconnect?appid=wxe24f70961302b5a5&amp;redirect_uri=http%3a%2f%2fmall.77sc.com.cn%2fweixin.php%3fr1%3dhttps://yc.qianqianya.xyz/weixin/getcode&amp;response_type=code&amp;scope=snsapi_login&amp;state=STATE#wechat_redirect">微信登录</a></li>--}}
                     </ul>
                {{-- @endif--}}

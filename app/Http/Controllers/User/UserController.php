@@ -62,6 +62,7 @@ class UserController extends Controller
         return view('users.login');
     }
     public function doLogin(Request $request){
+        //echo '<pre>';print_r($_POST);echo '</pre>';die;
         //echo __METHOD__;
         $name = $request->input('name');
         $where = [
@@ -80,7 +81,7 @@ class UserController extends Controller
                 Redis::expire($redis_token_key,3600);
 
                 echo 'successly';
-                header("refresh:1,url='http://larvel.com/goods'");
+                header("refresh:1,url='https://lxy.qianqianya.xyz/goods'");
             }else{
                 exit('密码错误');
             }
