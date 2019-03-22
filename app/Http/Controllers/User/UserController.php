@@ -108,11 +108,11 @@ class UserController extends Controller
                 //echo $type;die;
                 $id = $res['id'];
                 if($type == 1){
-                    Redis::flushAll();
+                    Redis::del("str:u_token_mobile_key$id");
                     Redis::set("str:u_token_app_key$id",$token);
                     Redis::expire("str:u_token_app_key$id",3600);
                 }else{
-                   Redis::flushAll();
+                    Redis::del("str:u_token_app_key$id");
                     Redis::set("str:u_token_mobile_key$id",$token);
                     Redis::expire("str:u_token_mobile_key$id",3600);
                 }
