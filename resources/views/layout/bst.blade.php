@@ -49,7 +49,6 @@
                             </ul>
                         </li>
                         <li><a href="/cart">购物车</a></li>
-                        <li><a href="http://pslxy.miao629.com/userquit">退出</a></li>
                     </ul>
                 {{--@elseif(!session()->get('u_token'))--}}
                     <ul class="nav navbar-nav navbar-right">
