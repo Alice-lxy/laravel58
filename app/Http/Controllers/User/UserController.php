@@ -72,7 +72,7 @@ class UserController extends Controller
         $res = UserModel::where($where)->first();
        // print_r($res);
         if($res){
-            if($pwd==$res['pwd']){
+            if($pwd==$res['password']){
                 $token = substr(md5(time().mt_rand(1,99999)),10,10);
                 setcookie('id',$res['id'],time()+86400,'/','lxy.qianqianya.xyz',false,true);
                 setcookie('token',$token,time()+86400,'/','lxy.qianqianya.xyz',false,true);
@@ -86,14 +86,12 @@ class UserController extends Controller
                     'msg'   => 'ok',
                     'token' => $token
                 ];
-                //header("refresh:1,url='https://lxy.qianqianya.xyz/goods'");
             }else{
                 $data = [
                     'error' =>  5000,
                     'msg'   => 'password error'
                 ];
             }
-            echo json_encode($data);
         }else{
             $data = [
                 'error' => 8888,
