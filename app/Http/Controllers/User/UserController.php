@@ -65,13 +65,14 @@ class UserController extends Controller
 //        echo '<pre>';print_r($_POST);echo '</pre>';die;
         //echo __METHOD__;
         $name = $request->input('name');
+        $pwd = $request->input('pwd');
         $where = [
             'name' => $name,
         ];
         $res = UserModel::where($where)->first();
        // print_r($res);
         if($res){
-            if(password_verify($request->input('pwd'),$res['pwd'])){
+            if($pwd==$res['pwd']){
                 $token = substr(md5(time().mt_rand(1,99999)),10,10);
                 setcookie('id',$res['id'],time()+86400,'/','lxy.qianqianya.xyz',false,true);
                 setcookie('token',$token,time()+86400,'/','lxy.qianqianya.xyz',false,true);
