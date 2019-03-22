@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class UserModel extends Model
 {
     //
-	public $table = 'users';
+	public $table = 'user';
 	public $timestamps =false;
 }
