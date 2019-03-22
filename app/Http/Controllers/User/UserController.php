@@ -73,29 +73,36 @@ class UserController extends Controller
         if($res){
             if(password_verify($request->input('pwd'),$res['pwd'])){
                 $token = substr(md5(time().mt_rand(1,99999)),10,10);
-                setcookie('id',$res['id'],time()+86400,'/','larvel.com',false,true);
-                setcookie('token',$token,time()+86400,'/','larvel.com',false,true);
+                setcookie('id',$res['id'],time()+86400,'/','lxy.qianqianya.xyz',false,true);
+                setcookie('token',$token,time()+86400,'/','lxy.qianqianya.xyz',false,true);
 
                 $redis_token_key = "str:u_token_key".$res['id'];
                 Redis::set($redis_token_key,$token);
                 Redis::expire($redis_token_key,3600);
 
-                echo 'successly';
+                $data = [
+                    'error' => 0,
+                    'msg'   => 'ok',
+                    'token' => $token
+                ];
                 header("refresh:1,url='https://lxy.qianqianya.xyz/goods'");
             }else{
-                exit('密码错误');
+                $data = [
+                    'error' =>  5000,
+                    'msg'   => 'password error'
+                ];
             }
+            echo json_encode($data);
         }else{
-            exit('此用户不存在');
+            $data = [
+                'error' => 8888,
+                'msg'   => 'account error'
+            ];
+            echo json_encode($data);
         }
     }
 
     public function center(Request $request){
         echo 'center';
-    }
-    /**	退出*/
-    public function quit(){
-        session()->pull('u_token',null);
-        header("refresh:0.2;url='http://passport.larvel.com/userlogin'");
     }
 }
