@@ -89,7 +89,7 @@ class UserController extends Controller
     }
 
     public function test(Request $request){
-        echo '<pre>';print_r($_POST);echo '</pre>';die;
+        //echo '<pre>';print_r($_POST);echo '</pre>';die;
         //echo __METHOD__;
         $name = $request->input('name');
         $where = [
