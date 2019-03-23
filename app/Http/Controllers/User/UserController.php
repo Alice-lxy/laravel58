@@ -124,7 +124,7 @@ class UserController extends Controller
                 'msg'   => 'account error'
             ];
         }
-        return $data;
+        return json_encode($data);
     }
 
     public function center(){
