@@ -88,6 +88,7 @@ class UserController extends Controller
         }
     }
 
+    /*test*/
     public function test(Request $request){
         //echo '<pre>';print_r($_POST);echo '</pre>';die;
         //echo __METHOD__;
@@ -126,6 +127,10 @@ class UserController extends Controller
             ];
         }
         return $data;
+    }
+    public function token(){
+        echo '<pre>';print_r($_POST);echo '</pre>';
+        print_r(json_encode($_POST));
     }
 
     public function center(){
