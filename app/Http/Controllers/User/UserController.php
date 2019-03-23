@@ -124,7 +124,10 @@ class UserController extends Controller
                 'msg'   => 'account error'
             ];
         }
+        var_dump(json_decode($data));
+        echo '<br>';
         var_dump(json_encode($data));
+        echo '<br>';
         var_dump($data);
     }
 
