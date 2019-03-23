@@ -109,6 +109,7 @@ class UserController extends Controller
                 $data = [
                     'error' => 0,
                     'msg'   => 'ok',
+                    'id'    => $id,
                     'token' => $token
                 ];
                 //echo "<pre>";print_r($data);echo '</pre>';
