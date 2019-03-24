@@ -129,8 +129,14 @@ class UserController extends Controller
         return $data;
     }
     public function token(){
-        echo '<pre>';print_r($_POST);echo '</pre>';
-        print_r(json_encode($_POST));
+        $token = $_POST['token'];
+        $id = $_POST['id'];
+        $new_token = Redis::get("str:u_token_key".$id);
+        if($token==$new_token){
+            return 1;
+        }else{
+            return 2;
+        }
     }
 
     public function center(){
