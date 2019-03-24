@@ -142,4 +142,9 @@ class UserController extends Controller
     public function center(){
         echo 'center';
     }
+    public function quit(){
+        $id = $_POST['id'];
+        $token = Redis::del("str:u_token_key".$id);
+        print_r($token);
+    }
 }
