@@ -131,7 +131,8 @@ class UserController extends Controller
     public function token(){
         $token = $_POST['token'];
         $id = $_POST['id'];
-        $new_token = Redis::get("str:u_token_key".$id);
+        $redis_key = "str:u_token_key".$id;
+        $new_token = Redis::get($redis_key);
         if($token==$new_token){
             return 1;
         }else{
@@ -143,8 +144,10 @@ class UserController extends Controller
         echo 'center';
     }
     public function quit(){
+       // print_r($_POST);die;
         $id = $_POST['id'];
-        $token = Redis::del("str:u_token_key".$id);
-        print_r($token);
+        $redis_key = "str:u_token_key".$id;
+        $token = Redis::del($redis_key);
+        return $token;
     }
 }
