@@ -89,6 +89,33 @@ class UserController extends Controller
     }
 
     /*test*/
+    public function apiReg(){
+        $name = $_POST['name'];
+        $res = UserModel::where(['name'=>$name])->first();
+        if($res){
+            exit('此用户已存在');
+        }
+        $pwd = $_POST['pwd'];
+        $pwd = password_hash($pwd,PASSWORD_BCRYPT);
+        $data = [
+            'name'  =>  $name,
+            'pwd'   =>  $pwd,
+            'email' =>  $_POST['email']
+        ];
+        $info = UserModel::insertGetId($data);
+        if($info){
+            $response = [
+                'error' =>  0,
+                'msg'   =>  'ok'
+            ];
+        }else{
+            $response = [
+                'error' =>  8989,
+                'msg'   =>  'error'
+            ];
+        }
+        return $response;
+    }
     public function test(Request $request){
         //echo '<pre>';print_r($_POST);echo '</pre>';die;
         //echo __METHOD__;
@@ -148,6 +175,6 @@ class UserController extends Controller
         $id = $_POST['id'];
         $redis_key = "str:u_token_key".$id;
         $token = Redis::del($redis_key);
-        return $token;
+        var_dump($token);
     }
 }

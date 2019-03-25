@@ -28,6 +28,7 @@ Route::get('/userlogin','User\UserController@login');
 Route::post('/userlogin','User\UserController@doLogin');
 Route::get('/usercenter','User\UserController@center')->middleware('check.login');
 
+Route::post('/user/reg','User\UserController@apiReg');
 Route::post('/user/login','User\UserController@test');
 Route::post('/user/token','User\UserController@token');
 Route::post('/user/quit','User\UserController@quit');
