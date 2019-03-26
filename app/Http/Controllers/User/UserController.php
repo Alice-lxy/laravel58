@@ -115,6 +115,8 @@ class UserController extends Controller
             ];
         }
         return $response;
+
+
     }
     public function test(Request $request){
         //echo '<pre>';print_r($_POST);echo '</pre>';die;

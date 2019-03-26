@@ -32,3 +32,7 @@ Route::post('/user/reg','User\UserController@apiReg');
 Route::post('/user/login','User\UserController@test');
 Route::post('/user/token','User\UserController@token');
 Route::post('/user/quit','User\UserController@quit');
+
+Route::post('/hb/login','HBulider\TestController@login');
+
+
