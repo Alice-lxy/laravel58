@@ -4,6 +4,7 @@ namespace App\Http\Controllers\HBulider;
 use App\Http\Controllers\Controller;
 use App\Model\HBModel;
 use Encore\Admin\Grid\Model;
+use Illuminate\Support\Facades\Redis;
 
 class TestController extends Controller
 {
