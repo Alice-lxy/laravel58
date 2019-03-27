@@ -15,9 +15,15 @@ class TestController extends Controller
         if($res){
             if($password==$res['password']){
                 $token = substr(md5(time().mt_rand(1,99999)),10,10);
+
+                $id = $res['id'];
+                $redis_token_key = "str:hb_u_token".$id;
+                Redis::set($redis_token_key,$token);
+                Redis::expire($redis_token_key,3600);
                 $response = [
                     'error' =>  0,
                     'msg'   => 'ok',
+                    'id'    =>  $id,
                     'token' =>  $token
                 ];
             }else{
