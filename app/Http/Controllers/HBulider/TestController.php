@@ -8,6 +8,31 @@ use Illuminate\Support\Facades\Redis;
 
 class TestController extends Controller
 {
+    //reg
+    public function reg(){
+        $name = $_POST['name'];
+        $password = $_POST['password'];
+        $email = $_POST['email'];
+        $data = [
+            'name'  =>  $name,
+            'password'  =>  $password,
+            'email' =>  $email
+        ];
+        $res = HBModel::insertGetId($data);
+        if(!$res){
+            $response = [
+                'error' =>  777,
+                'msg'   =>  'error'
+            ];
+        }else{
+            $response = [
+                'error' =>  0,
+                'msg'   =>  'ok'
+            ];
+        }
+        echo json_encode($response);
+    }
+    //login
     public function login(){
         $name = $_POST['name'];
         $password = $_POST['password'];
