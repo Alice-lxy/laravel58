@@ -50,6 +50,7 @@ class TestController extends Controller
                     'error' =>  0,
                     'msg'   => 'ok',
                     'uid'    =>  $id,
+                    'name'  =>  $name,
                     'token' =>  $token
                 ];
             }else{
