@@ -49,7 +49,7 @@ class TestController extends Controller
                 $response = [
                     'error' =>  0,
                     'msg'   => 'ok',
-                    'id'    =>  $id,
+                    'uid'    =>  $id,
                     'token' =>  $token
                 ];
             }else{
