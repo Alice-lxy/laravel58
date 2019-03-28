@@ -20,9 +20,18 @@ class TestController extends Controller
         ];
         $res = HBModel::insertGetId($data);
         if(!$res){
+            $token = substr(md5(time().mt_rand(1,99999)),10,10);
+
+            $id = $res['id'];
+            $redis_token_key = "str:hb_u_token".$id;
+            Redis::set($redis_token_key,$token);
+            Redis::expire($redis_token_key,3600);
             $response = [
-                'error' =>  777,
-                'msg'   =>  'error'
+                'error' =>  0,
+                'msg'   => 'ok',
+                'uid'    =>  $id,
+                'name'  =>  $name,
+                'token' =>  $token
             ];
         }else{
             $response = [
