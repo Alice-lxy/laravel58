@@ -83,10 +83,8 @@ class TestController extends Controller
         return $response;
     }
     //quit
-    /*public function quit(){
+    public function quit(){
         $uid = $_POST['uid'];
-
-
         $redis_token_key = "str:hb_u_token".$uid;
         $quit = Redis::del($redis_token_key);
         if($quit){
@@ -101,7 +99,7 @@ class TestController extends Controller
             ];
         }
         echo json_encode($response);
-    }*/
+    }
     //修改密码
     public function updpwd(){
         $id = $_POST['id'];
