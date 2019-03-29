@@ -48,7 +48,7 @@ class TestController extends Controller
     //login
     public function login(){
         $account = $_POST['account'];
-        //$password = md5($_POST['password']);
+        $password = md5($_POST['password']);
 
         $res = HBModel::orwhere(['name'=>$account])->orwhere(['email'=>$account])->orwhere(['tel'=>$account])->first();
         //print_r($res);die;
@@ -64,7 +64,7 @@ class TestController extends Controller
                     'error' =>  0,
                     'msg'   => 'ok',
                     'uid'    =>  $id,
-                    'name'  =>  $name,
+                    'name'  =>  $account,
                     'token' =>  $token
                 ];
             }else{
