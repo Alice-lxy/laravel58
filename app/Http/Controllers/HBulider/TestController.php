@@ -59,7 +59,7 @@ class TestController extends Controller
                 $id = $res['id'];
                 $redis_token_key = "str:hb_u_token".$id;
                 $arr = Redis::set($redis_token_key,$token);
-                print_r($arr);die;
+                //print_r($arr);die;
                 Redis::expire($redis_token_key,3600);
                 $response = [
                     'error' =>  0,
