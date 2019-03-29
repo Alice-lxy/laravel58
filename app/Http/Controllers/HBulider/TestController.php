@@ -58,7 +58,8 @@ class TestController extends Controller
 
                 $id = $res['id'];
                 $redis_token_key = "str:hb_u_token".$id;
-                Redis::set($redis_token_key,$token);
+                $arr = Redis::set($redis_token_key,$token);
+                print_r($arr);die;
                 Redis::expire($redis_token_key,3600);
                 $response = [
                     'error' =>  0,
@@ -81,6 +82,26 @@ class TestController extends Controller
         }
         return $response;
     }
+    //quit
+    /*public function quit(){
+        $uid = $_POST['uid'];
+
+
+        $redis_token_key = "str:hb_u_token".$uid;
+        $quit = Redis::del($redis_token_key);
+        if($quit){
+            $response = [
+                'error'	=>	0,
+                'msg'	=>	'ok'
+            ];
+        }else{
+            $response = [
+                'error'	=>	404,
+                'msg'	=>	'fail'
+            ];
+        }
+        echo json_encode($response);
+    }*/
     //修改密码
     public function updpwd(){
         $id = $_POST['id'];
@@ -139,12 +160,40 @@ class TestController extends Controller
         echo json_encode($response);
     }
     //添加好友
-   /* public function addFriend(){
+    public function addFriend(){
+        //本人uid   好友account
         $uid = $_POST['uid'];
+        $account = $_POST['account'];
+        $res = HBModel::orwhere(['name'=>$account])->orwhere(['email'=>$account])->orwhere(['tel'=>$account])->first();
+
         $where = ['id' =>  $uid];
         $info = HBModel::where($where)->first();
-        $friend = $info['friend'];
-        print_r($friend);
 
-    }*/
+        if($info['friend']){
+            $friend = explode(',', $info['friend']);
+            if (in_array($res['id'], $friend)) {
+                $response = [
+                    'error' => 408,
+                    'msg' => 'exist'
+                ];
+                echo json_encode($response);
+                die;
+            }
+        }
+            $new_friend = trim($info['friend'] . ',' . $res['id'] . ',', ',');
+            $data = HBModel::where($where)->update(['friend' => $new_friend]);
+            if ($data) {
+                $response = [
+                    'error' => 0,
+                    'msg' => 'ok'
+                ];
+            } else {
+                $response = [
+                    'error' => 407,
+                    'msg' => 'add fail'
+                ];
+            }
+            echo json_encode($response);
+
+    }
 }
