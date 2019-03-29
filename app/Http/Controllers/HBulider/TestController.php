@@ -84,4 +84,29 @@ class TestController extends Controller
     public function test(){
         echo md5(111);
     }
+    //搜索好友
+    public function searchFriend(){
+        $account = $_POST['account'];
+        $res = HBModel::orwhere(['name'=>$account])->orwhere(['email'=>$account])->orwhere(['tel'=>$account])->first();
+        if(!$res){
+            $response = [
+                'error' =>  505,
+                'msg'   =>  'this friend not found'
+            ];
+        }else{
+            $response = [
+                'error' =>  0,
+                'msg'   =>  'ok'
+            ];
+        }
+        echo json_encode($response);
+    }
+    //添加好友
+   /* public function addFriend(){
+        $uid = $_POST['uid'];
+        $where = ['id' =>  $uid];
+        $info = HBModel::where($where)->first();
+        $friend = $info['friend'];
+        print_r($friend);
+    }*/
 }

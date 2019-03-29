@@ -36,5 +36,8 @@ Route::post('/user/quit','User\UserController@quit');
 Route::post('/hb/reg','HBulider\TestController@reg');
 Route::post('/hb/login','HBulider\TestController@login');
 Route::post('/hb/test','HBulider\TestController@test');
+Route::post('/hb/search','HBulider\TestController@searchFriend');
+
+
 
 
