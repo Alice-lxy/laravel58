@@ -11,14 +11,18 @@ class TestController extends Controller
     //reg
     public function reg(){
         $name = $_POST['name'];
-        $password = $_POST['password'];
+        $password = md5($_POST['password']);
         $email = $_POST['email'];
+        $tel = $_POST['tel'];
         $data = [
             'name'  =>  $name,
-            'password'  =>  $password,
-            'email' =>  $email
+            'email' =>  $email,
+            'tel'   =>  $tel,
+            'password'  =>  $password
         ];
+
         $res = HBModel::insertGetId($data);
+        //print_r($res);die;
         if(!$res){
             $token = substr(md5(time().mt_rand(1,99999)),10,10);
 
@@ -43,10 +47,11 @@ class TestController extends Controller
     }
     //login
     public function login(){
-        $name = $_POST['name'];
-        $password = $_POST['password'];
+        $account = $_POST['account'];
+        //$password = md5($_POST['password']);
 
-        $res = HBModel::where(['name'=>$name])->first();
+        $res = HBModel::orwhere(['name'=>$account])->orwhere(['email'=>$account])->orwhere(['tel'=>$account])->first();
+        //print_r($res);die;
         if($res){
             if($password==$res['password']){
                 $token = substr(md5(time().mt_rand(1,99999)),10,10);
@@ -75,5 +80,8 @@ class TestController extends Controller
             ];
         }
         return $response;
+    }
+    public function test(){
+        echo md5(111);
     }
 }
