@@ -81,6 +81,43 @@ class TestController extends Controller
         }
         return $response;
     }
+    //修改密码
+    public function updpwd(){
+        $id = $_POST['id'];
+        $oldpwd = md5($_POST['oldpwd']);
+        $newpwd = md5($_POST['newpwd']);
+        $res = HBModel::where(['id'=>$id])->first()->toArray();//查看用户
+        //print_r($res);die;
+        if($res){
+            //修改密码
+            if($oldpwd!=$res['password']){
+                $response = [
+                    'error' =>  405,
+                    'msg'   =>  'oldpwd error',
+                ];
+            }else{
+                $arr = HBModel::where(['id'=>$id])->update(['password'=>$newpwd]);
+                if($arr){
+                    $response = [
+                        'error' =>  0,
+                        'mag'   =>  'ok'
+                    ];
+                }else{
+                    $response = [
+                        'error' =>  507,
+                        'mag'   =>  'upd error'
+                    ];
+                }
+            }
+        }else{
+            $response = [
+                'error' =>  506,
+                'msg'   =>  'this user not found'
+            ];
+        }
+        echo json_encode($response);
+
+    }
     public function test(){
         echo md5(111);
     }
@@ -96,7 +133,7 @@ class TestController extends Controller
         }else{
             $response = [
                 'error' =>  0,
-                'msg'   =>  'ok'
+                'msg'   =>  'ok',
             ];
         }
         echo json_encode($response);
@@ -108,5 +145,6 @@ class TestController extends Controller
         $info = HBModel::where($where)->first();
         $friend = $info['friend'];
         print_r($friend);
+
     }*/
 }

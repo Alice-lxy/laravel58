@@ -83,10 +83,11 @@
       <file leaf-file-name="TestController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HBulider/TestController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.54545456">
-              <caret line="104" column="5" selection-start-line="104" selection-start-column="3" selection-end-line="110" selection-end-column="7" />
+            <state vertical-scroll-proportion="0.45454547">
+              <caret line="144" column="24" selection-start-line="144" selection-start-column="24" selection-end-line="144" selection-end-column="24" />
               <folding>
                 <element signature="e#48#84#0#PHP" expanded="true" />
+                <marker date="1553840552781" expanded="true" signature="4231:4411" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -95,8 +96,8 @@
       <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.088235">
-              <caret line="38" column="34" selection-start-line="38" selection-start-column="34" selection-end-line="38" selection-end-column="34" />
+            <state vertical-scroll-proportion="-3.90625">
+              <caret line="37" column="13" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -199,7 +200,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1633888" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -244,6 +245,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#48#84#0#PHP" expanded="true" />
+            <marker date="1553840552781" expanded="true" signature="4231:4411" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -262,6 +264,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#48#84#0#PHP" expanded="true" />
+            <marker date="1553840552781" expanded="true" signature="4231:4411" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -280,6 +283,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#48#84#0#PHP" expanded="true" />
+            <marker date="1553840552781" expanded="true" signature="4231:4411" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -298,6 +302,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#48#84#0#PHP" expanded="true" />
+            <marker date="1553840552781" expanded="true" signature="4231:4411" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -316,6 +321,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#48#84#0#PHP" expanded="true" />
+            <marker date="1553840552781" expanded="true" signature="4231:4411" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -334,6 +340,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#48#84#0#PHP" expanded="true" />
+            <marker date="1553840552781" expanded="true" signature="4231:4411" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -347,18 +354,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.088235">
-          <caret line="38" column="34" selection-start-line="38" selection-start-column="34" selection-end-line="38" selection-end-column="34" />
+        <state vertical-scroll-proportion="-3.90625">
+          <caret line="37" column="13" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HBulider/TestController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.54545456">
-          <caret line="104" column="5" selection-start-line="104" selection-start-column="3" selection-end-line="110" selection-end-column="7" />
+        <state vertical-scroll-proportion="0.45454547">
+          <caret line="144" column="24" selection-start-line="144" selection-start-column="24" selection-end-line="144" selection-end-column="24" />
           <folding>
             <element signature="e#48#84#0#PHP" expanded="true" />
+            <marker date="1553840552781" expanded="true" signature="4231:4411" placeholder="..." />
           </folding>
         </state>
       </provider>
