@@ -32,7 +32,7 @@ Route::post('/user/reg','User\UserController@apiReg');
 Route::post('/user/login','User\UserController@test');
 Route::post('/user/token','User\UserController@token');
 Route::post('/user/quit','User\UserController@quit');
-
+//group
 Route::post('/hb/reg','HBulider\TestController@reg');
 Route::post('/hb/login','HBulider\TestController@login');
 Route::post('/hb/updpwd','HBulider\TestController@updpwd');
@@ -40,7 +40,8 @@ Route::post('/hb/quit','HBulider\TestController@quit');
 Route::post('/hb/test','HBulider\TestController@test');
 Route::post('/hb/search','HBulider\TestController@searchFriend');
 Route::post('/hb/friend','HBulider\TestController@addFriend');
-
+//计划任务
+Route::get('crontab','Crontab\IndexController@orderDel');
 
 
 
